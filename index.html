@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Rock-Paper-Scissors</title>
+</head>
+<body>
+	<script>
+	// setting global variables for the program
+
+		let playerScore = 0;
+		let computerScore = 0;
+		let arr = ["rock","paper","scissors"];
+		const win = "Congrats you win!";
+		const lose = "Better luck next time";
+		const tie = "Tie - still have a shot";
+		const winner = "you won";
+		const loser = "you lost";
+		const tied = "tie game - refresh page to play again"
+	
+	//created the computer selection function by using random number to assign position in array	
+	
+		function computerPlay(){
+			
+		return arr[Math.floor(Math.random()*3)];
+			
+		}
+	
+	//created the playround function itself
+	
+		function playRound (playerSelection, computerSelection) {
+			
+		if (playerSelection === "rock" && computerSelection === "paper") {
+			computerScore += 1;
+			return lose;
+			} else if (playerSelection === "rock" && computerSelection === "scissors") {
+			playerScore += 1;
+			return win;
+			} else if (playerSelection === "paper" && computerSelection === "rock") {
+			playerScore += 1;
+			return win;
+			} else if (playerSelection === "scissors" && computerSelection === "rock") {
+			computerScore += 1;
+			return win;
+			} else if (playerSelection === "scissors" && computerSelection === "scissors") {
+			return tie;
+			} else if (playerSelection === "rock" && computerSelection === "rock") {
+			return tie;
+			} else if (playerSelection === "paper" && computerSelection === "paper") {
+			return tie;
+			}
+
+			} 
+		
+	// create the game function that goes to 5 rounds 
+
+		function game() 
+		{	
+			
+		let round = 0;
+			
+
+			while (round < 5) {
+				playerSelection = window.prompt("Rock, Paper, or Scissors?").toLowerCase();
+				computerSelection = computerPlay();
+				computerPlay();
+				console.log(playRound(playerSelection, computerSelection));
+				round++;	
+			}
+			
+			if (playerScore > computerScore){
+				console.log(winner);
+			}
+		    
+			else if (playerScore < computerScore){
+			
+				console.log(loser);
+			}
+			
+			else if (playerScore == computerScore) {
+			
+				console.log(tied)
+			}
+		
+		}
+		
+		game();
+	
+	
+	</script>
+
+  
+</body>
+</html>
